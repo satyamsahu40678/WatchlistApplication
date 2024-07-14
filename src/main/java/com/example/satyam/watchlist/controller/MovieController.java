@@ -13,11 +13,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+//@RestController annotation is a combination of @Controller and @ResponseBody.
+//It indicates that this class handles HTTP requests and returns the response body
 @RestController
 public class MovieController {
 
     @Autowired
     DatabaseService databaseService;
+
+    //this method mapping get request to /watchlistItemForm...here we are handling the adding and updating movie
+    //it will show our watchlist
     @GetMapping("/watchlistItemForm")
     public ModelAndView showWatchListForm(@RequestParam(required = false) Integer id){ //we are keeping request require false so it is only needed when we click on update
         System.out.println(id);
@@ -32,19 +37,11 @@ public class MovieController {
         else{
             model.put("watchlistItem", databaseService.getMovieById(id));
         }
-
-//        Movie dummyMovie = new Movie();
-//        dummyMovie.setTitle("dummy");
-//        dummyMovie.setRating(0);
-//        dummyMovie.setPriority("Low");
-//        dummyMovie.setComment("Jhon doe");
-
-//        model.put("watchlistItem", dummyMovie);
-
-
         return new ModelAndView(viewName, model);
     }
 
+
+    //handling post request Binding Result holds the result of validation
     @PostMapping("/watchlistItemForm")
     public ModelAndView submitWatchListForm(@Valid @ModelAttribute("watchlistItem") Movie movie, BindingResult bindingResult){
 
@@ -76,6 +73,8 @@ public class MovieController {
         return new ModelAndView(rd);
     }
 
+
+    //It retrieves all teh m0vies list from the database and display them on wtachlist page all we add movies list here
     @GetMapping("/watchlist")
     public ModelAndView getWatchlist(){
         //will get the form at watchlistItemForm as redirecting after submitting movie

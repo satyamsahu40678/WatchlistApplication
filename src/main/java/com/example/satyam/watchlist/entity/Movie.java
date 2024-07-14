@@ -9,6 +9,8 @@ import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
+//here using all the custum annotations we createdd
+//@Entity used to marked class as java JPA - it allows to map object in to database
 @Entity
 public class Movie {
     @Id
@@ -23,6 +25,8 @@ public class Movie {
     @Size(max = 50, message = "Do not over-express yourself, restrict to 50 words")
     private String comment;
 
+
+//    defining all the getter and setter here
     public Integer getId() {
         return id;
     }

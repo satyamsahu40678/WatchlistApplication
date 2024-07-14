@@ -3,6 +3,7 @@ package com.example.satyam.watchlist;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+//combines three annotations @Configuration, @EnableAutoConfiguration, and @ComponentScan.
 @SpringBootApplication
 public class WatchlistApplication {
 
