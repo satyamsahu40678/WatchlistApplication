@@ -14,7 +14,6 @@ public class RatingService {
             //try to fetch the rating by calling omdb api
             RestTemplate template = new RestTemplate();
             //apiurl + title
-
             ResponseEntity<ObjectNode> response = template.getForEntity(apiUrl + title, ObjectNode.class);
             ObjectNode jsonObject = response.getBody(); //it will get the complete json
             System.out.println(jsonObject.path("imdbRating").asText());

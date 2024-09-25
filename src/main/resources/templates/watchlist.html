@@ -45,17 +45,19 @@
 				<th class="text-left">Rating</th>
 				<th class="text-left">Priority</th>
 				<th class="text-left">Comment</th>
-				<th class="text-left"></th>
+				<th class="text-left">Actions</th>
 			</tr>
 			</thead>
 			<tbody>
-			<!-- Using Thymeleaf each loop to access list -->
 			<tr th:each="movierow : ${watchlistrows}">
 				<td th:text="${movierow.title}">Avatar</td>
 				<td th:text="${movierow.rating}">7.8</td>
 				<td th:text="${movierow.priority}">High</td>
 				<td th:text="${movierow.comment}">Peter recommended</td>
-				<td><a href="#" class="btn btn-info" role="button" th:href="@{/watchlistItemForm(id=${movierow.id})}">Update</a></td>
+				<td>
+					<a href="#" class="btn btn-info" role="button" th:href="@{/watchlistItemForm(id=${movierow.id})}">Update</a>
+					<a href="#" class="btn btn-danger" role="button" th:href="@{/deleteMovie(id=${movierow.id})}">Delete</a>
+				</td>
 			</tr>
 			</tbody>
 		</table>
